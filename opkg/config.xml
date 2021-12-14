@@ -86,7 +86,7 @@
         <arch>i386</arch>
       </filters>
       <pkg>systemimager-i386boot-standard</pkg>
-      <pkg>systemimager-i386initrd_template</pkg>
+      <pkg>systemimager-initrd_template</pkg>
     </requires>
     <requires>
       <filters>
@@ -94,7 +94,7 @@
         <arch>ppc</arch>
       </filters>
       <pkg>systemimager-ppc64-ps3boot-standard</pkg>
-      <pkg>systemimager-ppc64-ps3initrd_template</pkg>
+      <pkg>systemimager-initrd_template</pkg>
       <pkg>dhcp</pkg>
       <pkg>xinetd</pkg>
     </requires>
@@ -117,7 +117,7 @@
         <arch>i386</arch>
       </filters>
       <pkg>systemimager-boot-i386-standard</pkg>
-      <pkg>systemimager-initrd-template-i386</pkg>
+      <pkg>systemimager-initrd-template</pkg>
     </requires>
     <requires>
       <filters>
@@ -125,7 +125,7 @@
         <arch>x86_64</arch>
       </filters>
       <pkg>systemimager-boot-amd64-standard</pkg>
-      <pkg>systemimager-initrd-template-amd64</pkg>
+      <pkg>systemimager-initrd-template</pkg>
     </requires>
     <requires>
       <filters>
@@ -137,7 +137,7 @@
         <arch>ia64</arch>
       </filters>
       <pkg>systemimager-ia64boot-standard</pkg>
-      <pkg>systemimager-ia64initrd_template</pkg>
+      <pkg>systemimager-initrd_template</pkg>
     </requires>
     <requires>
       <filters>
@@ -150,7 +150,7 @@
       </filters>
       <pkg>syslinux</pkg>
       <pkg>systemimager-x86_64boot-standard</pkg>
-      <pkg>systemimager-x86_64initrd_template</pkg>
+      <pkg>systemimager-initrd_template</pkg>
     </requires>
   </serverDeps>
   <clientDeps>
@@ -162,6 +162,11 @@
   </clientDeps>
   <apiDeps/>
   <changelog>
+    <versionEntry version="4.2-1">
+      <changelogEntry authorName="Olivier Lahaye" date="2021-12-14T15:55:38+02:00">
+        <item>initrd template package is not arch dependant anymore.</item>
+      </changelogEntry>
+    </versionEntry>
     <versionEntry version="4.1-1">
       <changelogEntry authorName="Olivier Lahaye" date="2018-09-05T14:34:19+02:00">
         <item>Revert back to standard tftp (atftp abandoned)</item>
