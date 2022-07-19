@@ -71,23 +71,21 @@ unless ($Config{useithreads}) {
 # TODO: Finish to switch to SystemService, inlcuding when enabling the services.
 my $os = OSCAR::OCA::OS_Detect::open();
 my $binary_format = $os->{'pkg'};
-my $rc = OSCAR::SystemServices::system_service (
+my $rc = system_service (
         OSCAR::SystemServicesDefs::SI_MONITORD(),
         OSCAR::SystemServicesDefs::START());
 if ($rc != 0) {
-    die "ERROR: Impossible to start service ($rc)";
+    die "ERROR: Unable to start service ($rc)";
 }
-$rc = OSCAR::SystemServices::system_service (
+$rc = system_service (
         OSCAR::SystemServicesDefs::SI_RSYNCD(),
         OSCAR::SystemServicesDefs::START());
 if ($rc != 0) {
-    die "ERROR: Impossible to start service ($rc)";
+    die "ERROR: Unable to start service ($rc)";
 }
-my @services = qw(systemimager-server-rsyncd systemimager-server-monitord);
+my @services = (SI_RSYNC(), SI_MONITOR());
 foreach my $service (@services) {
   opkg_print("Enabling $service\n");
-  if ($binary_format ne "deb") {
-    !system("chkconfig --add $service") or croak("Failed to add $service");
-    !system("chkconfig $service on") or croak("Failed to enable $service");
-  }
+  if (enable_system_services($service)) != 0) {
+    die "ERROR: Failed to enable service $service";
 }
