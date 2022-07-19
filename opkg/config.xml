@@ -9,6 +9,10 @@
   <uri>http://systemimager.org/</uri>
   <authors>
     <author cat="maintainer">
+      <name>Olivier Lahaye</name>
+      <email>olivier.lahaye@cea.fr</email>
+    </author>
+    <author cat="maintainer">
       <name>Erich Focht</name>
       <email>efocht@hpce.nec.com</email>
     </author>
@@ -24,38 +28,22 @@
   <serverDeps>
     <requires>
       <filters>
+        <dist>rhel</dist>
+        <dist>debian</dist>
         <dist>suse</dist>
         <dist>sles</dist>
-        <dist>mdv</dist>
-        <dist>rhel</dist>
         <dist>fc</dist>
+        <dist>mdv</dist>
         <dist>ydl</dist>
       </filters>
+      <pkg>systemimager-server</pkg>
       <pkg>systemimager-client</pkg>
-      <pkg>systemconfigurator</pkg>
       <pkg>systemimager-common</pkg>
-      <pkg>bittorrent</pkg>
+      <pkg>dracut-systemimager</pkg>
+      <pkg>systemconfigurator</pkg>
       <pkg>systeminstaller-oscar</pkg>
       <pkg>systeminstaller-oscar-x11</pkg>
-      <pkg>systemimager-server</pkg>
-      <pkg>systemimager-flamethrower</pkg>
-      <pkg>systemimager-bittorrent</pkg>
-    </requires>
-    <requires>
-      <filters>
-        <dist>mdv</dist>
-      </filters>
-      <pkg>pxelinux</pkg>
-      <pkg>perl-forks</pkg>
-      <pkg>perl-reaper</pkg>
-    </requires>
-    <requires>
-      <filters>
-        <dist>suse</dist>
-        <dist>sles</dist>
-      </filters>
-      <pkg>bittorrent-compat-suse</pkg>
-      <pkg>tftp</pkg>
+      <pkg>syslinux</pkg>
     </requires>
     <requires>
       <filters>
@@ -64,17 +52,37 @@
         <dist>mdv</dist>
         <dist>ydl</dist>
       </filters>
+      <pkg>systemimager-initrd_template</pkg>
       <pkg>tftp-server</pkg>
     </requires>
     <requires>
       <filters>
-        <dist>rhel</dist>
-        <dist>fc</dist>
         <dist>suse</dist>
         <dist>sles</dist>
+      </filters>
+      <pkg>systemimager-initrd_template</pkg>
+      <pkg>tftp</pkg>
+    </requires>
+    <requires>
+      <filters>
+        <dist>debian</dist>
+      </filters>
+      <pkg>systemimager-initrd-template</pkg>
+      <pkg>tftpd</pkg>
+    </requires>
+    <requires>
+      <filters>
+        <dist>debian</dist>
         <arch>i386</arch>
       </filters>
-      <pkg>syslinux</pkg>
+      <pkg>systemimager-boot-i386-standard</pkg>
+    </requires>
+    <requires>
+      <filters>
+        <dist>debian</dist>
+        <arch>x86_64</arch>
+      </filters>
+      <pkg>systemimager-boot-amd64-standard</pkg>
     </requires>
     <requires>
       <filters>
@@ -86,7 +94,6 @@
         <arch>i386</arch>
       </filters>
       <pkg>systemimager-i386boot-standard</pkg>
-      <pkg>systemimager-initrd_template</pkg>
     </requires>
     <requires>
       <filters>
@@ -94,38 +101,8 @@
         <arch>ppc</arch>
       </filters>
       <pkg>systemimager-ppc64-ps3boot-standard</pkg>
-      <pkg>systemimager-initrd_template</pkg>
       <pkg>dhcp</pkg>
       <pkg>xinetd</pkg>
-    </requires>
-    <requires>
-      <filters>
-        <dist>debian</dist>
-      </filters>
-      <pkg>systemimager-server</pkg>
-      <pkg>systemimager-client</pkg>
-      <pkg>systemimager-server-flamethrowerd</pkg>
-      <pkg>systemconfigurator</pkg>
-      <pkg>systeminstaller-oscar</pkg>
-      <pkg>systeminstaller-oscar-x11</pkg>
-      <pkg>syslinux</pkg>
-      <pkg>tftpd</pkg>
-    </requires>
-    <requires>
-      <filters>
-        <dist>debian</dist>
-        <arch>i386</arch>
-      </filters>
-      <pkg>systemimager-boot-i386-standard</pkg>
-      <pkg>systemimager-initrd-template</pkg>
-    </requires>
-    <requires>
-      <filters>
-        <dist>debian</dist>
-        <arch>x86_64</arch>
-      </filters>
-      <pkg>systemimager-boot-amd64-standard</pkg>
-      <pkg>systemimager-initrd-template</pkg>
     </requires>
     <requires>
       <filters>
@@ -137,7 +114,6 @@
         <arch>ia64</arch>
       </filters>
       <pkg>systemimager-ia64boot-standard</pkg>
-      <pkg>systemimager-initrd_template</pkg>
     </requires>
     <requires>
       <filters>
@@ -150,7 +126,6 @@
       </filters>
       <pkg>syslinux</pkg>
       <pkg>systemimager-x86_64boot-standard</pkg>
-      <pkg>systemimager-initrd_template</pkg>
     </requires>
   </serverDeps>
   <clientDeps>
@@ -162,6 +137,13 @@
   </clientDeps>
   <apiDeps/>
   <changelog>
+    <versionEntry version="4.3-1">
+      <changelogEntry authorName="Olivier Lahaye" date="2022-06-28T10:19:42+02:00">
+        <item>remove bittorrent and flamethrower from deps as they are not</item>
+        <item>mandatory and not available everywhere.</item>
+        <item>api-post-configure will install package if needed.</item>
+      </changelogEntry>
+    </versionEntry>
     <versionEntry version="4.2-1">
       <changelogEntry authorName="Olivier Lahaye" date="2021-12-14T15:55:38+02:00">
         <item>initrd template package is not arch dependant anymore.</item>
