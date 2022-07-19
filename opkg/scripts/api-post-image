@@ -212,9 +212,9 @@ if (OSCAR::ImageMgt::update_modprobe_config ($imagedir)) {
         "($imagedir)";
 }
 
-if (OSCAR::ImageMgt::update_image_initrd ($imagedir)) {
-    die "ERROR: Impossible to generate the initrd for $imagedir";
-}
+#if (OSCAR::ImageMgt::update_image_initrd ($imagedir)) {
+#    die "ERROR: Impossible to generate the initrd for $imagedir";
+#}
 
 $ENV{OSCAR_VERBOSE} = $initial_verbose;
 
