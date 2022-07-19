@@ -72,18 +72,18 @@ unless ($Config{useithreads}) {
 my $os = OSCAR::OCA::OS_Detect::open();
 my $binary_format = $os->{'pkg'};
 my $rc = system_service (
-        OSCAR::SystemServicesDefs::SI_MONITORD(),
+        OSCAR::SystemServicesDefs::SI_MONITOR(),
         OSCAR::SystemServicesDefs::START());
 if ($rc != 0) {
     die "ERROR: Unable to start service ($rc)";
 }
 $rc = system_service (
-        OSCAR::SystemServicesDefs::SI_RSYNCD(),
+        OSCAR::SystemServicesDefs::SI_RSYNC(),
         OSCAR::SystemServicesDefs::START());
 if ($rc != 0) {
     die "ERROR: Unable to start service ($rc)";
 }
-my @services = (SI_RSYNC(), SI_MONITOR());
+my @services = (SOSCAR::SystemServicesDefs::I_RSYNC(), SOSCAR::SystemServicesDefs::I_MONITOR());
 foreach my $service (@services) {
   opkg_print("Enabling $service\n");
   if (enable_system_services($service)) != 0) {
