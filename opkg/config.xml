@@ -44,6 +44,7 @@
       <pkg>systeminstaller-oscar</pkg>
       <pkg>systeminstaller-oscar-x11</pkg>
       <pkg>syslinux</pkg>
+      <pkg>sync-files</pkg>
     </requires>
     <requires>
       <filters>
@@ -137,7 +138,10 @@
   </clientDeps>
   <apiDeps/>
   <changelog>
-    <versionEntry version="4.3-1">
+    <versionEntry version="4.4-1">
+      <changelogEntry authorName="Olivier Lahaye" date="2022-07-20T14:21:17+02:00">
+        <item>Add sync-files for server (api-post-image).</item>
+      </changelogEntry>
       <changelogEntry authorName="Olivier Lahaye" date="2022-06-28T10:19:42+02:00">
         <item>remove bittorrent and flamethrower from deps as they are not</item>
         <item>mandatory and not available everywhere.</item>
