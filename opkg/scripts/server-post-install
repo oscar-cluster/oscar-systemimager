@@ -83,9 +83,10 @@ $rc = system_service (
 if ($rc != 0) {
     die "ERROR: Unable to start service ($rc)";
 }
-my @services = (SOSCAR::SystemServicesDefs::I_RSYNC(), SOSCAR::SystemServicesDefs::I_MONITOR());
+my @services = (SOSCAR::SystemServicesDefs::SI_RSYNC(), SOSCAR::SystemServicesDefs::SI_MONITOR());
 foreach my $service (@services) {
   opkg_print("Enabling $service\n");
-  if (enable_system_services($service)) != 0) {
+  if (enable_system_services($service) != 0) {
     die "ERROR: Failed to enable service $service";
+  }
 }
