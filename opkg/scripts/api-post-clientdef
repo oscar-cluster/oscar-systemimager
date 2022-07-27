@@ -316,11 +316,11 @@ foreach my $client ( @sis_clients ) {
         # get a list of the nic interface names for this node
 
     my %h = (client=>$client->{name});
-    my @sis_adapters = SIS::NewDB::list_adapter(\%h);
+    my $sis_adapters = SIS::NewDB::list_adapter(\%h);
 
 	# for each found nic for this node, ...
 
-	foreach my $adapter ( @sis_adapters ) {
+	foreach my $adapter ( @{$sis_adapters} ) {
 	    print_hash( "", "SIS function list_adapter adapater", $adapter ) 
 		if $options{ debug };
 
